@@ -1,0 +1,6 @@
+// Clone git repo: git clone https://github.com/AvePazuzu/CryptoCloud.git
+
+// Pull newest files & Changes: git pull
+// & git merge
+
+// Add new changes to branch: git add . ; git git commit -m "First commit"; git push
