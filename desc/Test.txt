@@ -4,3 +4,4 @@
 // & git merge
 
 // Add new changes to branch: git add . ; git git commit -m "First commit"; git push
+// Commit to new Branc: 1. git checkout -b your-new-branch; 2. git commit -m <message>; 3. git push origin your-new-branch
