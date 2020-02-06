@@ -1,1 +1,1 @@
-This program reads the dir it is in, fetches the file names and writes it to a .txt. 
+This program reads the dir it is in, fetches the file names and writes them to a .txt. 
