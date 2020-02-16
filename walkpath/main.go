@@ -1,3 +1,8 @@
+// This program:
+// 1. Reads files in dir
+// 2. Creates new folder in dir
+// 3. Writes file names in a .txt
+// 4. Saves .txt in new folder
 package main
 
 import (
