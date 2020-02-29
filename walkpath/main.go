@@ -46,7 +46,7 @@ func main() {
 		}
 	}
 
-	// Names var is declared wiht the make func
+	// names var is declared wiht the make func
 	// only bytes are written to files
 	names := make([]byte, 0, total)
 	// Loop over the files, check for size and append the names
