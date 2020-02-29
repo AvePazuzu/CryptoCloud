@@ -13,23 +13,23 @@ import (
 
 func main() {
 
+	// Loop over the files in path return the len of each file
+	// and add it to total; +1 as additional place for line separator '\n'
+
 	// Create new Folder in dir
-	path := "./newdir"
+	dirName := "newdir"
+	path := "./" + dirName
 	if _, err := os.Stat(path); os.IsNotExist(err) {
-		os.Mkdir(path, 0644)
+		os.Mkdir(path, 0744)
 		fmt.Println("newdir successfully created")
 	} else {
 		fmt.Println("newdir already exsists")
 	}
 	// Read Files in dir
-	files, err0 := ioutil.ReadDir(".")
-	if err0 != nil {
+	files, err := ioutil.ReadDir(".")
+	if err != nil {
 		fmt.Println("Something went wrong! - I will return from the function!")
 		return
-	}
-
-	for _, v := range files {
-		fmt.Println(v.Name())
 	}
 
 	// To optimize the program the backing array is created only once
@@ -37,11 +37,8 @@ func main() {
 	// var total is the capacity of the backing array
 
 	var total int
-
-	// Loop over the files in path return the len of each file
-	// and add it to total; +1 as additional place for line separator '\n'
 	for _, file := range files {
-		if file.Name() != "main.go" {
+		if file.Name() != "main.go" || file.Name() != dirName {
 			total += len(file.Name()) + 1
 		}
 	}
@@ -51,12 +48,18 @@ func main() {
 	names := make([]byte, 0, total)
 	// Loop over the files, check for size and append the names
 	for _, file := range files {
-		if file.Name() != "main.go" {
+		if file.Name() != "main.go" && file.Name() != dirName {
 			n := file.Name()
 			names = append(names, n...)
 			// '\n' seperator needed to separate the bytes by line
 			names = append(names, '\n')
 		}
+	}
+	// '0644' is a Unix code for file permissions
+	err = ioutil.WriteFile(dirName+"/out.txt", names, 0644)
+	if err != nil {
+		fmt.Println(err)
+		return
 	}
 
 	// for _, v := range names {
@@ -72,7 +75,7 @@ func main() {
 	// 		fileNames[i] = files[i].Name()
 	// 	}
 	// }
-	fmt.Printf("%#v \n", names)
+	// fmt.Printf("%#v \n", names)
 
 	// Create .txt file to write the fileNames to:
 	var txt = "File_Names.txt"
