@@ -78,8 +78,6 @@ func main() {
 	// fmt.Printf("%#v \n", names)
 
 	// Create .txt file to write the fileNames to:
-	var txt = "File_Names.txt"
-
 	// check if file exists
 	// var _, err = os.Stat(txt)
 
@@ -91,8 +89,15 @@ func main() {
 	// 	}
 	// 	defer newFile.Close()
 	// }
+	// fmt.Println("File Created Successfully", txt)
 
-	fmt.Println("File Created Successfully", txt)
+	// read in file and write it into other folder
+	dat, err := ioutil.ReadFile("./IT_Flye.pdf")
+	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", dat, 0644)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 }
 
