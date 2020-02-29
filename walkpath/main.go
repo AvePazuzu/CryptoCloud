@@ -62,6 +62,14 @@ func main() {
 		return
 	}
 
+	// read in file and write it into other folder
+	dat, err := ioutil.ReadFile("./IT_Flye.pdf")
+	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", dat, 0644)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	// for _, v := range names {
 	// 	fmt.Println(v.Name())
 	// }
@@ -90,14 +98,6 @@ func main() {
 	// 	defer newFile.Close()
 	// }
 	// fmt.Println("File Created Successfully", txt)
-
-	// read in file and write it into other folder
-	dat, err := ioutil.ReadFile("./IT_Flye.pdf")
-	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", dat, 0644)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
 
 }
 
