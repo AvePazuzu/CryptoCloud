@@ -61,7 +61,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-
+	// dat1:= bufio.NewReader()
 	// read in file and write it into other folder
 	dat, err := ioutil.ReadFile("./IT_Flye.pdf")
 	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", dat, 0644)
