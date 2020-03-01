@@ -6,6 +6,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -63,12 +64,15 @@ func main() {
 	}
 	// dat1:= bufio.NewReader()
 	// read in file and write it into other folder
-	dat, err := ioutil.ReadFile("./IT_Flye.pdf")
-	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", dat, 0644)
+	dat1, err := ioutil.ReadFile("./IT_Flye.pdf")
+
+	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", dat1, 0644)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	dat2, err := ioutil.ReadFile("./newdir/IT_Flye.pdf")
+	fmt.Println(bytes.Equal(dat1, dat2))
 
 	// for _, v := range names {
 	// 	fmt.Println(v.Name())
