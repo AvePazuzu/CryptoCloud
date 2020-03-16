@@ -72,6 +72,8 @@ func main() {
 		return
 	}
 	dat2, err := ioutil.ReadFile("./newdir/IT_Flye.pdf")
+
+	// test if both files are still the same
 	fmt.Println(bytes.Equal(dat1, dat2))
 
 	// for _, v := range names {
