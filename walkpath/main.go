@@ -57,13 +57,13 @@ func main() {
 		}
 	}
 	// '0644' is a Unix code for file permissions
-	err = ioutil.WriteFile(dirName+"/out.txt", names, 0644)
+	err = ioutil.WriteFile(dirName+"/files_in_dir.txt", names, 0644)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	// dat1:= bufio.NewReader()
-	// read in file and write it into other folder
+
+	// read in file and write it into created dir
 	dat1, err := ioutil.ReadFile("./IT_Flye.pdf")
 
 	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", dat1, 0644)
@@ -71,14 +71,11 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	dat2, err := ioutil.ReadFile("./newdir/IT_Flye.pdf")
+
+	dat2, err := ioutil.ReadFile(dirName+"/IT_Flye.pdf")
 
 	// test if both files are still the same
 	fmt.Println(bytes.Equal(dat1, dat2))
-
-	// for _, v := range names {
-	// 	fmt.Println(v.Name())
-	// }
 
 	// Declare a fileNames var of type slice by using the make func of len(files-1)
 	// fileNames := make([]string, len(files)-1)
