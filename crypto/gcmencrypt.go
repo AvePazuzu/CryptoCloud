@@ -1,31 +1,42 @@
 package main
 
 import (
-	"crypto/sha256"
+	"crypto/aes"
+	"crypto/cipher"
+	"crypto/rand"
 	"fmt"
+	"io"
 )
-
-func createKey() [32]byte {
-	passPhrase := "Some Pass Phrase"
-	key := sha256.Sum256([]byte(passPhrase))
-	return key
-}
-
-func getFiles() []byte {
-	plain := []byte("exampleplaintext")
-	return plain
-}
-
-// func encrypt() {
-// 	block := cipher.NewGCM()
-// }
 
 func main() {
 
-	key := createKey()
+	text := []byte("My Super Secret Code Stuff")
 
-	plain := getFiles()
+	key := []byte("passphrasewhichneedstobe32bytes!")
 
-	fmt.Printf("%x \n", key)
-	fmt.Printf("%x \n", plain)
+	// generate a new aes cipher using our 32 byte long key
+	block, err := aes.NewCipher(key)
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	// Never use more than 2^32 random nonces with a given key because of the risk of a repeat.
+	nonce := make([]byte, 12)
+	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
+		panic(err.Error())
+	}
+
+	aesgcm, err := cipher.NewGCM(block)
+	if err != nil {
+		panic(err.Error())
+	}
+
+	ciphertext := aesgcm.Seal(nil, nonce, text, nil)
+
+	fmt.Printf("%s\n", text)
+	fmt.Printf("%s encoded: %x\n", text, ciphertext)
+
+	// fmt.Printf("%x \n", key)
+	// fmt.Printf("%x \n", plain)
 }
