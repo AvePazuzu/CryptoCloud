@@ -20,3 +20,4 @@ Process:
 2. Ask for pass phrase 
 3. Encrypt pass phrase to 32 byte slice with sha256 checksum
 4. Encrypt data with AES and GCM (Galois/Counter Mode) as operation mode
+5. Add sha256 checksum of file to the additional data of aes GCM ciphertext
