@@ -7,12 +7,20 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"io/ioutil"
+	"os"
 )
 
 func main() {
-	fmt.Println("Hello, Gopher")
+	dirName := "decrypted"
+	path := "./" + dirName
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		os.Mkdir(path, 0744)
+		fmt.Println("decrypted successfully created")
+	} else {
+		fmt.Println("decrypted already exsists")
+	}
 
-	ciphertext, err := ioutil.ReadFile("encrypted.data")
+	ciphertext, err := ioutil.ReadFile("encrypted/encrypted.data")
 	// if our program was unable to read the file
 	// print out the reason why it can't
 	if err != nil {
@@ -43,11 +51,14 @@ func main() {
 		panic(err.Error())
 	}
 
-	// fmt.Printf("len nonce: %d\nlen ciphertext: %d\nlen add: %d\n", len(nonce), len(ciphertext), len(add))
+	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", plaintext, 0777)
+
 	fmt.Printf("add is  : %x\n", add)
 	fmt.Printf("plain is: %x\n", sha256.Sum256(plaintext))
 	sum := sha256.Sum256(plaintext)
 	fmt.Printf("Equal: %t\n", bytes.Equal(sum[:], add))
-	fmt.Printf("%s\n", plaintext)
-
+	dat2, err := ioutil.ReadFile("./IT_Flye.pdf")
+	dat1, err := ioutil.ReadFile(dirName + "/IT_Flye.pdf")
+	// sumDat2 := sha256.Sum256(dat2)
+	fmt.Printf("Equal: %t\n", bytes.Equal(dat2, dat1))
 }

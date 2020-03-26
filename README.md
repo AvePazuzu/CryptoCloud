@@ -21,3 +21,6 @@ Process:
 3. Encrypt pass phrase to 32 byte slice with sha256 checksum
 4. Encrypt data with AES and GCM (Galois/Counter Mode) as operation mode
 5. Add sha256 checksum of file to the additional data of aes GCM ciphertext
+
+Notes: 
+- File name needs to be passed to aditional data if necessary

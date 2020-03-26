@@ -8,12 +8,21 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"os"
 )
 
 func main() {
 
-	text := []byte("My Super Secret Code Stuff")
+	dirName := "encrypted"
+	path := "./" + dirName
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		os.Mkdir(path, 0744)
+		fmt.Println("encryped successfully created")
+	} else {
+		fmt.Println("encrypted already exsists")
+	}
 
+	text, err := ioutil.ReadFile("./IT_Flye.pdf")
 	// to comape the decrypted data with the source data the checksum is passed to the Seal func
 	sum := sha256.Sum256(text)
 
@@ -44,14 +53,10 @@ func main() {
 	ciphertext = append(ciphertext, sum[:]...)
 
 	// write encrypted data to file
-	err = ioutil.WriteFile("encrypted.data", ciphertext, 0777)
+	err = ioutil.WriteFile(dirName+"/encrypted.data", ciphertext, 0777)
 
 	fmt.Printf("%d \n", aesgcm.NonceSize())
-	fmt.Printf("%s len text: %d\n", text, len(text))
+	fmt.Printf("len text: %d\n", len(text))
 	fmt.Printf("%x len sum: %d\n", sum, len(sum))
-	fmt.Printf("%x len cipher: %d\n", ciphertext, len(ciphertext))
-	fmt.Printf("%s encoded: %x\nlen encoded: %d\n", text, ciphertext, len(ciphertext))
-
-	// fmt.Printf("%x \n", key)
-	// fmt.Printf("%x \n", plain)
+	fmt.Printf("len cipher: %d\n", len(ciphertext))
 }

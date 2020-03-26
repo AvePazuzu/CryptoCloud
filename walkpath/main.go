@@ -66,13 +66,13 @@ func main() {
 	// read in file and write it into created dir
 	dat1, err := ioutil.ReadFile("./IT_Flye.pdf")
 
-	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", dat1, 0644)
+	err = ioutil.WriteFile(dirName+"/IT_Flye222.pdf", dat1, 0644)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	"dat2, err := ioutil.ReadFile(dirName+"/IT_Flye.pdf"")
+	dat2, err := ioutil.ReadFile(dirName + "/IT_Flye222.pdf")
 
 	// test if both files are still the same
 	fmt.Println(bytes.Equal(dat1, dat2))
