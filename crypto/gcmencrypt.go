@@ -41,13 +41,16 @@ func main() {
 
 	ciphertext := aesgcm.Seal(nonce, nonce, text, sum[:])
 
+	ciphertext = append(ciphertext, sum[:]...)
+
 	// write encrypted data to file
-	err = ioutil.WriteFile("encrypted.data", nonce, 0777)
+	err = ioutil.WriteFile("encrypted.data", ciphertext, 0777)
 
 	fmt.Printf("%d \n", aesgcm.NonceSize())
-	fmt.Printf("%s\n", text)
-	fmt.Printf("%x\n", sum)
-	fmt.Printf("%s encoded: %x\n", text, ciphertext)
+	fmt.Printf("%s len text: %d\n", text, len(text))
+	fmt.Printf("%x len sum: %d\n", sum, len(sum))
+	fmt.Printf("%x len cipher: %d\n", ciphertext, len(ciphertext))
+	fmt.Printf("%s encoded: %x\nlen encoded: %d\n", text, ciphertext, len(ciphertext))
 
 	// fmt.Printf("%x \n", key)
 	// fmt.Printf("%x \n", plain)
