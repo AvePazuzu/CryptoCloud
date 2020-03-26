@@ -20,7 +20,7 @@ func main() {
 		fmt.Println("decrypted already exsists")
 	}
 
-	ciphertext, err := ioutil.ReadFile("encrypted/encrypted.data")
+	ciphertext, err := ioutil.ReadFile("encrypted/IT_Flye.pdf")
 	// if our program was unable to read the file
 	// print out the reason why it can't
 	if err != nil {

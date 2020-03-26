@@ -53,7 +53,7 @@ func main() {
 	ciphertext = append(ciphertext, sum[:]...)
 
 	// write encrypted data to file
-	err = ioutil.WriteFile(dirName+"/encrypted.data", ciphertext, 0777)
+	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", ciphertext, 0777)
 
 	fmt.Printf("%d \n", aesgcm.NonceSize())
 	fmt.Printf("len text: %d\n", len(text))
