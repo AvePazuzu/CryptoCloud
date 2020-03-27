@@ -10,7 +10,7 @@ import (
 	"os"
 )
 
-func main() {
+func decrypt() {
 	dirName := "decrypted"
 	path := "./" + dirName
 	if _, err := os.Stat(path); os.IsNotExist(err) {

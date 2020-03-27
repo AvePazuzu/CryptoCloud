@@ -22,5 +22,9 @@ Process:
 4. Encrypt data with AES and GCM (Galois/Counter Mode) as operation mode
 5. Add sha256 checksum of file to the additional data of aes GCM ciphertext
 
+To-Do:
+- Compare function to new file
+- File reader to new file + move into package
+
 Notes: 
 - File name needs to be passed to aditional data if necessary

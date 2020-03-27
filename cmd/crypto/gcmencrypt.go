@@ -11,7 +11,7 @@ import (
 	"os"
 )
 
-func main() {
+func encrypt() {
 
 	dirName := "encrypted"
 	path := "./" + dirName
@@ -22,7 +22,7 @@ func main() {
 		fmt.Println("encrypted already exsists")
 	}
 
-	text, err := ioutil.ReadFile("./IT_Flye.pdf")
+	text, err := ioutil.ReadFile(".files/IT_Flye.pdf")
 	// to comape the decrypted data with the source data the checksum is passed to the Seal func
 	sum := sha256.Sum256(text)
 
