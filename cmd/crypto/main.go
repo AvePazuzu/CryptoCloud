@@ -7,7 +7,21 @@ import (
 func main() {
 	fmt.Println("Hello, Gopher")
 
-	encrypt()
+	fileNames := getFiles()
 
-	decrypt()
+	fmt.Println(fileNames)
+
+	mkDirEnc()
+
+	encs := getEncrypted()
+	fmt.Println(encs)
+
+	mkDirDec()
+
+	for _, name := range fileNames {
+		encrypt(name)
+	}
+	for _, name := range encs {
+		decrypt(name)
+	}
 }

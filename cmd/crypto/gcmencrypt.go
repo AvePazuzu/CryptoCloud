@@ -11,18 +11,20 @@ import (
 	"os"
 )
 
-func encrypt() {
-
+func mkDirEnc() {
 	dirName := "encrypted"
 	path := "./" + dirName
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		os.Mkdir(path, 0744)
-		fmt.Println("encryped successfully created")
+		fmt.Println("Folder \"encryped\" successfully created.")
 	} else {
-		fmt.Println("encrypted already exsists")
+		fmt.Println("Folder \"encryped\" already exsists.")
 	}
+}
 
-	text, err := ioutil.ReadFile(".files/IT_Flye.pdf")
+func encrypt(fileName string) {
+
+	text, err := ioutil.ReadFile("./files/" + fileName)
 	// to comape the decrypted data with the source data the checksum is passed to the Seal func
 	sum := sha256.Sum256(text)
 
@@ -53,7 +55,7 @@ func encrypt() {
 	ciphertext = append(ciphertext, sum[:]...)
 
 	// write encrypted data to file
-	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", ciphertext, 0777)
+	err = ioutil.WriteFile("./encrypted/"+fileName, ciphertext, 0777)
 
 	fmt.Printf("%d \n", aesgcm.NonceSize())
 	fmt.Printf("len text: %d\n", len(text))

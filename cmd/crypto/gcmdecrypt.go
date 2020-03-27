@@ -10,7 +10,7 @@ import (
 	"os"
 )
 
-func decrypt() {
+func mkDirDec() {
 	dirName := "decrypted"
 	path := "./" + dirName
 	if _, err := os.Stat(path); os.IsNotExist(err) {
@@ -19,8 +19,11 @@ func decrypt() {
 	} else {
 		fmt.Println("decrypted already exsists")
 	}
+}
 
-	ciphertext, err := ioutil.ReadFile("encrypted/IT_Flye.pdf")
+func decrypt(fileName string) {
+
+	ciphertext, err := ioutil.ReadFile("./encrypted/" + fileName)
 	// if our program was unable to read the file
 	// print out the reason why it can't
 	if err != nil {
@@ -51,14 +54,14 @@ func decrypt() {
 		panic(err.Error())
 	}
 
-	err = ioutil.WriteFile(dirName+"/IT_Flye.pdf", plaintext, 0777)
+	err = ioutil.WriteFile("./decrypted/"+fileName, plaintext, 0777)
 
 	fmt.Printf("add is  : %x\n", add)
 	fmt.Printf("plain is: %x\n", sha256.Sum256(plaintext))
 	sum := sha256.Sum256(plaintext)
 	fmt.Printf("Equal: %t\n", bytes.Equal(sum[:], add))
 	dat2, err := ioutil.ReadFile("./IT_Flye.pdf")
-	dat1, err := ioutil.ReadFile(dirName + "/IT_Flye.pdf")
+	dat1, err := ioutil.ReadFile("/IT_Flye.pdf")
 	// sumDat2 := sha256.Sum256(dat2)
 	fmt.Printf("Equal: %t\n", bytes.Equal(dat2, dat1))
 }
