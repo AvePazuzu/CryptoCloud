@@ -5,12 +5,12 @@ import (
 	"io/ioutil"
 )
 
+// getFiles returns the file information in dir: "files"
 func getFiles() (names []string) {
 
-	// Read Files in dir
 	files, err := ioutil.ReadDir("./files")
 	if err != nil {
-		fmt.Println("Reading files failed! Program is terminated! Error: ", err)
+		fmt.Println("Reading file information failed! Program is terminated! Error: ", err)
 		return
 	}
 
@@ -21,11 +21,12 @@ func getFiles() (names []string) {
 	return
 }
 
+// getEcnypted retruns the file information in dir: "encrypted"
 func getEncrypted() (encs []string) {
-	// Read Files in in folder "encrypted"
+
 	files, err := ioutil.ReadDir("./encrypted")
 	if err != nil {
-		fmt.Println("Reading encrypted files failed! Program is terminated! Error: ", err)
+		fmt.Println("Reading encrypted file information failed! Program is terminated! Error: ", err)
 		return
 	}
 
