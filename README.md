@@ -42,4 +42,4 @@ Notes:
 3. After several runs with different files/data check if the data in the folder "decrypted" has taken any damage.
 4. Please sent the files in the folder "logs" to e.kusowenko@gmail.com
 
-!!!Thank you for the participation in the test!!!
+!!!Thank you for the participation in this test!!!
