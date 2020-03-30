@@ -8,23 +8,28 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"os"
 )
 
-func mkDirEnc() {
-	dirName := "encrypted"
+func mkDir(dirName string) {
+
 	path := "./" + dirName
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		os.Mkdir(path, 0744)
-		fmt.Println("Folder \"encryped\" successfully created.")
+		fmt.Printf("Folder \"%s\" successfully created.\n", dirName)
 	} else {
-		fmt.Println("Folder \"encryped\" already exsists.")
+		fmt.Printf("Folder \"%s\" already exsists.\n", dirName)
 	}
 }
 
 func encrypt(fileName string) {
 
 	text, err := ioutil.ReadFile("./files/" + fileName)
+	if err != nil {
+		log.Fatal(err)
+
+	}
 	// to comape the decrypted data with the source data the checksum is passed to the Seal func
 	sum := sha256.Sum256(text)
 
@@ -57,8 +62,4 @@ func encrypt(fileName string) {
 	// write encrypted data to file
 	err = ioutil.WriteFile("./encrypted/"+fileName, ciphertext, 0777)
 
-	fmt.Printf("%d \n", aesgcm.NonceSize())
-	fmt.Printf("len text: %d\n", len(text))
-	fmt.Printf("%x len sum: %d\n", sum, len(sum))
-	fmt.Printf("len cipher: %d\n", len(ciphertext))
 }
