@@ -7,19 +7,18 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"io/ioutil"
-	"os"
 )
 
-func mkDirDec() {
-	dirName := "decrypted"
-	path := "./" + dirName
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		os.Mkdir(path, 0744)
-		fmt.Println("decrypted successfully created")
-	} else {
-		fmt.Println("decrypted already exsists")
-	}
-}
+// func mkDirDec() {
+// 	dirName := "decrypted"
+// 	path := "./" + dirName
+// 	if _, err := os.Stat(path); os.IsNotExist(err) {
+// 		os.Mkdir(path, 0744)
+// 		fmt.Println("decrypted successfully created")
+// 	} else {
+// 		fmt.Println("decrypted already exsists")
+// 	}
+// }
 
 func decrypt(fileName string) {
 
