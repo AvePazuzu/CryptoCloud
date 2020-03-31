@@ -11,6 +11,12 @@ func main() {
 
 	// set start
 	t1 := time.Now()
+	fmt.Println("\nProgram starts ...")
+
+	// dir name for data to encrypt
+	fdata := "files"
+	mkDir(fdata)
+	dir := "./" + fdata
 
 	// create session log
 	sessionLog := make([]byte, 0)
@@ -19,8 +25,10 @@ func main() {
 	// append operating system
 	sessionLog = append(sessionLog, "\n"+"OS: "+runtime.GOOS...)
 
+	fmt.Printf("\nChecking data in %q\n", fdata)
+
 	// retrieve the files to encrypt
-	files, err := ioutil.ReadDir("./files")
+	files, err := ioutil.ReadDir(dir)
 	if err != nil {
 		fmt.Println("Reading file information failed! Program is terminated! Error: ", err)
 		return
@@ -36,7 +44,7 @@ func main() {
 		encrypt(name.Name())
 	}
 
-	mkDirDec()
+	mkDir("decrypted")
 
 	for _, name := range encs {
 		decrypt(name)
@@ -48,9 +56,10 @@ func main() {
 	fmt.Println(elapsed)
 	sessionLog = append(sessionLog, "\n"+"Elapsed Time: "+elapsed.String()...)
 
-	// write session log to file
+	// create dir for and write session log to file
 	// '0644' is a Unix code for file permissions
-	err = ioutil.WriteFile("./"+t1.Format("02.01.2006_15:04:05")+".txt", sessionLog, 0644)
+	mkDir("sessions")
+	err = ioutil.WriteFile("./sessions/"+t1.Format("02.01.2006_15:04:05")+".txt", sessionLog, 0644)
 	if err != nil {
 		fmt.Println(err)
 		return

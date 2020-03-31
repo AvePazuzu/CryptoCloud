@@ -17,9 +17,9 @@ func mkDir(dirName string) {
 	path := "./" + dirName
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		os.Mkdir(path, 0744)
-		fmt.Printf("Folder \"%s\" successfully created.\n", dirName)
+		fmt.Printf("\nFolder \"%s\" successfully created.\n", dirName)
 	} else {
-		fmt.Printf("Folder \"%s\" already exsists.\n", dirName)
+		fmt.Printf("\nFolder \"%s\" already exsists.\n", dirName)
 	}
 }
 
