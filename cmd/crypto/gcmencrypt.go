@@ -15,11 +15,12 @@ import (
 func mkDir(dirName string) {
 
 	path := "./" + dirName
+	fmt.Printf("\nCheking directory ... ")
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		os.Mkdir(path, 0744)
-		fmt.Printf("\nFolder \"%s\" successfully created.\n", dirName)
+		fmt.Printf("Folder \"%s\" successfully created.\n", dirName)
 	} else {
-		fmt.Printf("\nFolder \"%s\" already exsists.\n", dirName)
+		fmt.Printf("Folder \"%s\" already exsists.\n", dirName)
 	}
 }
 
