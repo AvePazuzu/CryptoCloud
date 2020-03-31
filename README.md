@@ -40,6 +40,6 @@ Notes:
 1. Copy the the executalbe and the folder "files" in to a separate folder.
 2. Copy some files or any kind of data into the folder "files". Make sure that you only use copies of the files/data. Since this is a test there is no guaranty that you data takes no damage.
 3. After several runs with different files/data check if the data in the folder "decrypted" has taken any damage.
-4. Please sent the files in the folder "logs" to e.kusowenko@gmail.com
+4. Please sent the files in the folder "logs" 
 
 !!!Thank you for the participation in this test!!!

@@ -9,17 +9,6 @@ import (
 	"io/ioutil"
 )
 
-// func mkDirDec() {
-// 	dirName := "decrypted"
-// 	path := "./" + dirName
-// 	if _, err := os.Stat(path); os.IsNotExist(err) {
-// 		os.Mkdir(path, 0744)
-// 		fmt.Println("decrypted successfully created")
-// 	} else {
-// 		fmt.Println("decrypted already exsists")
-// 	}
-// }
-
 func decrypt(fileName string) {
 
 	ciphertext, err := ioutil.ReadFile("./encrypted/" + fileName)
