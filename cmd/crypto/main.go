@@ -20,18 +20,20 @@ func main() {
 	sessionLog = append(sessionLog, "\n"+"OS: "+runtime.GOOS...)
 
 	// retrieve the files to encrypt
-	fileNames := getFiles()
+	files, err := ioutil.ReadDir("./files")
+	if err != nil {
+		fmt.Println("Reading file information failed! Program is terminated! Error: ", err)
+		return
+	}
 
-	fmt.Println(fileNames)
-
-	mkDirEnc()
+	mkDir("encrypted")
 
 	// retrieve the files to decrypt
 	encs := getEncrypted()
 	fmt.Println(encs)
 
-	for _, name := range fileNames {
-		encrypt(name)
+	for _, name := range files {
+		encrypt(name.Name())
 	}
 
 	mkDirDec()
@@ -48,7 +50,7 @@ func main() {
 
 	// write session log to file
 	// '0644' is a Unix code for file permissions
-	err := ioutil.WriteFile("./sessionlog.txt", sessionLog, 0644)
+	err = ioutil.WriteFile("./"+t1.Format("02.01.2006_15:04:05")+".txt", sessionLog, 0644)
 	if err != nil {
 		fmt.Println(err)
 		return
