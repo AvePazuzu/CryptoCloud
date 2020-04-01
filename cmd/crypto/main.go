@@ -14,8 +14,9 @@ func main() {
 	fmt.Println("\nProgram starts ...")
 
 	// dir name for data to encrypt
+	setupDir()
 	fdata := "files"
-	mkDir(fdata)
+	// mkDir(fdata)
 	dir := "./" + fdata
 
 	// create session log
@@ -33,8 +34,14 @@ func main() {
 		fmt.Println("Reading file information failed! Program is terminated! Error: ", err)
 		return
 	}
-	// get & print out number of data objects to encrypt
-	fmt.Printf("%q contains %d data object(s)\n", fdata, len(files))
+	// if exists get & print out number of data objects to encrypt
+	if len(files) > 0 {
+		fmt.Printf("%q contains %d data object(s)\n", fdata, len(files))
+
+	} else {
+		fmt.Println("There is no data to encrypt. Program is terminating.")
+		return
+	}
 
 	mkDir("encrypted")
 
@@ -43,6 +50,8 @@ func main() {
 	for _, name := range files {
 		encrypt(name.Name())
 	}
+
+	fmt.Printf("%d data objects(s) successfully encrypted.\n", len(files))
 
 	// retrieve the files to decrypt
 	encs := getEncrypted()
@@ -61,11 +70,16 @@ func main() {
 
 	// create dir for and write session log to file
 	// '0644' is a Unix code for file permissions
-	mkDir("sessions")
+	// mkDir("sessions")
 	// err = ioutil.WriteFile("./sessions/"+t1.Format("02.01.2006_15:04:05")+".txt", sessionLog, 0644)
 	// if err != nil {
 	// 	fmt.Println(err)
 	// 	return
 	// }
-
+	// fmt.Println("Press 'Enter' to Exit.")
+	// if true {
+	// 	bufio.NewReader(os.Stdin).ReadBytes('\n')
+	// 	return
+	// }
+	// exit()
 }

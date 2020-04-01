@@ -5,24 +5,10 @@ import (
 	"crypto/cipher"
 	"crypto/rand"
 	"crypto/sha256"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
-	"os"
 )
-
-func mkDir(dirName string) {
-
-	path := "./" + dirName
-	fmt.Printf("\nCheking directory ... ")
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		os.Mkdir(path, 0744)
-		fmt.Printf("Folder \"%s\" successfully created.\n", dirName)
-	} else {
-		fmt.Printf("Folder \"%s\" already exsists.\n", dirName)
-	}
-}
 
 func encrypt(fileName string) {
 

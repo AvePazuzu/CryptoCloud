@@ -23,6 +23,7 @@ Process:
 5. Add sha256 checksum of file to the additional data of aes GCM ciphertext
 
 To-Do:
+- 3 Functions to choose from: Encrypt, Decrypt, Compare
 - Compare function to new file
 - File reader to new file + move into package
 - Documentation
