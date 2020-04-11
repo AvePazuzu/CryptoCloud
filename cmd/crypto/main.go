@@ -64,6 +64,9 @@ func main() {
 		decrypt(name)
 	}
 
+	compHash()
+	compDirect()
+
 	// set end, calculate the elapsed time and append it to sessionLog
 	t2 := time.Now()
 	elapsed := t2.Sub(t1)
