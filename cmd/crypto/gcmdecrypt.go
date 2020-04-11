@@ -48,8 +48,7 @@ func decrypt(fileName string) {
 	fmt.Printf("plain is: %x\n", sha256.Sum256(plaintext))
 	sum := sha256.Sum256(plaintext)
 	fmt.Printf("Equal: %t\n", bytes.Equal(sum[:], add))
-	dat2, err := ioutil.ReadFile("./IT_Flye.pdf")
-	dat1, err := ioutil.ReadFile("/IT_Flye.pdf")
+
 	// sumDat2 := sha256.Sum256(dat2)
-	fmt.Printf("Equal: %t\n", bytes.Equal(dat2, dat1))
+
 }

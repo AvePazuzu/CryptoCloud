@@ -18,7 +18,7 @@ func main() {
 		return
 	}
 	fdata := "files"
-	// mkDir(fdata)
+
 	dir := "./" + fdata
 
 	// create session log
@@ -64,7 +64,7 @@ func main() {
 		decrypt(name)
 	}
 
-	compHash()
+	// compHash()
 	compDirect()
 
 	// set end, calculate the elapsed time and append it to sessionLog
