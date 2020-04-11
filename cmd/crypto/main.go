@@ -14,7 +14,9 @@ func main() {
 	fmt.Println("\nProgram starts ...")
 
 	// dir name for data to encrypt
-	setupDir()
+	if setupDir() != true {
+		return
+	}
 	fdata := "files"
 	// mkDir(fdata)
 	dir := "./" + fdata
@@ -36,7 +38,7 @@ func main() {
 	}
 	// if exists get & print out number of data objects to encrypt
 	if len(files) > 0 {
-		fmt.Printf("%q contains %d data object(s)\n", fdata, len(files))
+		fmt.Printf("%q contains %d data object(s).\n", fdata, len(files))
 
 	} else {
 		fmt.Println("There is no data to encrypt. Program is terminating.")
