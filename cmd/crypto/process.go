@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"time"
 )
 
 // setupDir scans current dir for "files". It is used as the destination for data to encrypt.
@@ -60,4 +61,13 @@ func exit() {
 	var input string
 	fmt.Scanln(&input)
 	return
+}
+
+// wrErr function to write out all errors. It takes the error if
+// occures and writes the error message to file.
+func wrErr(err error) {
+	t := time.Now()
+	fmt.Println("Writing error message to file.")
+	mkDir("errors")
+	err = ioutil.WriteFile("./errors/"+t.Format("02.01.2006_15:04:05")+".txt", err, 0644)
 }
