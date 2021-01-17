@@ -16,7 +16,7 @@ https://de.wikipedia.org/wiki/Betriebsmodus_(Kryptographie)
 https://de.wikipedia.org/wiki/Advanced_Encryption_Standard
 
 Process: 
-1. Walk through path in folder files one by one as []byte data
+1. Walk through path in folder files one by one as [ ]byte data
 2. Ask for pass phrase 
 3. Encrypt pass phrase to 32 byte slice with sha256 checksum
 4. Encrypt data with AES and GCM (Galois/Counter Mode) as operation mode
