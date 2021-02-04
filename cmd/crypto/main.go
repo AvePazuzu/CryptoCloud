@@ -14,12 +14,19 @@ func main() {
 
 	// set start
 	t1 := time.Now()
-	fmt.Println("\nProgram starts ...")
-
+	fmt.Println("\nWelcome to MyFileLocker!\n")
+	fmt.Println("\nSelect from the following options:\n",
+"[1]: Encrypt\n",
+"[2]: Decrypt\n",
+"[3]: Compare\n",
+"[4]: Help\n",
+"[5]: Exit",)
+	
+	// var incase bool
 	for {
 		// Read input from console
 		reader := bufio.NewReader(os.Stdin)
-		fmt.Print("Enter text: ")
+		fmt.Print("\nEnter the your number: ")
 		
 		input, err := reader.ReadString('\n')
 		
@@ -34,16 +41,29 @@ func main() {
 		switch input {
 		case "1":
 			fmt.Println("1 has been entered")
-			return
+			continue
 		case "2":
 			fmt.Println("2 has been entered")
+			continue
+		case "3":
+			fmt.Println("3 has been entered")
+			continue
+		case "4":
+			fmt.Println("4 has been entered")
+			continue
+		case "5":
+			fmt.Println("\nExiting program... See you soon!\n")
+			time.Sleep(2 * time.Second)
 			return
 		default:
 			fmt.Println("Enter valid input.")
+			continue
 		}
+		break
+		
 	}
 
-
+	fmt.Println("Returned as needed!")
 	
 	return
 
