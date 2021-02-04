@@ -5,6 +5,9 @@ import (
 	"io/ioutil"
 	"runtime"
 	"time"
+	"os"
+	"bufio"
+	"strings"
 )
 
 func main() {
@@ -12,6 +15,37 @@ func main() {
 	// set start
 	t1 := time.Now()
 	fmt.Println("\nProgram starts ...")
+
+	for {
+		// Read input from console
+		reader := bufio.NewReader(os.Stdin)
+		fmt.Print("Enter text: ")
+		
+		input, err := reader.ReadString('\n')
+		
+		// To make input comparable delimiter needs to be removed
+		input = strings.Replace(input, "\n", "", -1)
+
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		
+		switch input {
+		case "1":
+			fmt.Println("1 has been entered")
+			return
+		case "2":
+			fmt.Println("2 has been entered")
+			return
+		default:
+			fmt.Println("Enter valid input.")
+		}
+	}
+
+
+	
+	return
 
 	// dir name for data to encrypt
 	if setupDir() != true {

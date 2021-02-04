@@ -20,7 +20,7 @@ func encrypt(fileName string) {
 	// to comape the decrypted data with the source data the checksum is passed to the Seal func
 	sum := sha256.Sum256(text)
 
-	passphrase := []byte("passphrasewhichneedstobe32bytes!")
+	passphrase := []byte("passphredstobe32bytes!")
 	// to enshure the constant lenght of the key the passphrase is encoded by sha256
 	key := sha256.Sum256(passphrase)
 

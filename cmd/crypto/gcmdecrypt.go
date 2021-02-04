@@ -20,7 +20,7 @@ func decrypt(fileName string) {
 
 	fmt.Printf("len file: %d\n", len(ciphertext))
 
-	passphrase := []byte("passphrasewhichneedstobe32bytes!")
+	passphrase := []byte("passphredstobe32bytes!")
 	// to enshure the constant lenght of the key the passphrase is encoded by sha256
 	key := sha256.Sum256(passphrase)
 
