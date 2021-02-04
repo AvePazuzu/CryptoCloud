@@ -15,7 +15,7 @@ func main() {
 	// set start
 	t1 := time.Now()
 	fmt.Println("\nWelcome to MyFileLocker!\n")
-	fmt.Println("\nSelect from the following options:\n",
+	fmt.Println("Select from the following options:\n",
 "[1]: Encrypt\n",
 "[2]: Decrypt\n",
 "[3]: Compare\n",
