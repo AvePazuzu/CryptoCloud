@@ -7,11 +7,16 @@ import (
 	// "time"
 )
 
-// setupDir scans current dir for "files". It is used as the destination for data to encrypt.
-// The program returns if it needs to be created or sets var s=true to continune main.
+// slice of required dirs
+var dirs = []string{"data_to_encrypt", "encrypted_data", "decrypted_data"}
+
+// setupDir scans current dir for the necessary folders and creates them if they are missing.
 func setupDir() (s bool) {
-	dirName := "files"
-	path := "./" + dirName
+	dirs := [1,2,3]
+	dirData := "data_to_encrypt"
+	dirEncrypted := "encrypted_data"
+	dirDecrypted := "decrypted_data"
+	path := "./"
 	fmt.Printf("\nCheking directory ... ")
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		os.Mkdir(path, 0744)

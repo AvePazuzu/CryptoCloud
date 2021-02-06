@@ -1,13 +1,13 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"io/ioutil"
-	"runtime"
-	"time"
 	"os"
-	"bufio"
+	"runtime"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -16,20 +16,20 @@ func main() {
 	t1 := time.Now()
 	fmt.Println("\nWelcome to MyFileLocker!\n")
 	fmt.Println("Select from the following options:\n",
-"[1]: Encrypt\n",
-"[2]: Decrypt\n",
-"[3]: Compare\n",
-"[4]: Help\n",
-"[5]: Exit",)
-	
+		"[1]: Encrypt\n",
+		"[2]: Decrypt\n",
+		"[3]: Compare\n",
+		"[4]: Help\n",
+		"[5]: Exit")
+
 	// var incase bool
 	for {
 		// Read input from console
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print("\nEnter the your number: ")
-		
+
 		input, err := reader.ReadString('\n')
-		
+
 		// To make input comparable delimiter needs to be removed
 		input = strings.Replace(input, "\n", "", -1)
 
@@ -37,7 +37,7 @@ func main() {
 			fmt.Println(err)
 			return
 		}
-		
+
 		switch input {
 		case "1":
 			fmt.Println("1 has been entered")
@@ -60,11 +60,11 @@ func main() {
 			continue
 		}
 		break
-		
+
 	}
 
 	fmt.Println("Returned as needed!")
-	
+
 	return
 
 	// dir name for data to encrypt
