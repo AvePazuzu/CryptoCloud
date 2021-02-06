@@ -11,24 +11,19 @@ import (
 var dirs = []string{"data_to_encrypt", "encrypted_data", "decrypted_data"}
 
 // setupDir scans current dir for the necessary folders and creates them if they are missing.
-func setupDir() (s bool) {
-	dirs := [1,2,3]
-	dirData := "data_to_encrypt"
-	dirEncrypted := "encrypted_data"
-	dirDecrypted := "decrypted_data"
+func setupDir() {
+
 	path := "./"
-	fmt.Printf("\nCheking directory ... ")
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		os.Mkdir(path, 0744)
-		fmt.Printf("Folder %q is missing and needs to be created.\n", dirName)
-		fmt.Printf("\nFolder %q successfully created.\n", dirName)
-		fmt.Printf("\nPlease copy data into %q and restart the program.\n", dirName)
-		exit()
-	} else {
-		fmt.Printf("Folder %q already exsists.\n", dirName)
-		s = true
+	fmt.Println("Cheking directory ... ")
+
+	for _, dir := range dirs {
+		if _, err := os.Stat(path + dir); os.IsNotExist(err) {
+			os.Mkdir(path+dir, 0744)
+			fmt.Printf("\nFolder \"%s\" created.\n", dir)
+		}
 	}
-	return s
+	fmt.Println("\nDirectory is set up... You are ready to lock...\n")
+
 }
 
 // mkDir scans dir for desired folder and creates it if necessary
@@ -73,6 +68,6 @@ func exit() {
 //func wrErr(err error) {
 //	t := time.Now()
 //	fmt.Println("Writing error message to file.")
-	// mkDir("errors")
-	// err = ioutil.WriteFile("./errors/"+t.Format("02.01.2006_15:04:05")+".txt", err, 0644)
+// mkDir("errors")
+// err = ioutil.WriteFile("./errors/"+t.Format("02.01.2006_15:04:05")+".txt", err, 0644)
 // }

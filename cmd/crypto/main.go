@@ -15,6 +15,10 @@ func main() {
 	// set start
 	t1 := time.Now()
 	fmt.Println("\nWelcome to MyFileLocker!\n")
+
+	// setupDir() checks directory for missing folders and creates them
+	setupDir()
+
 	fmt.Println("Select from the following options:\n",
 		"[1]: Encrypt\n",
 		"[2]: Decrypt\n",
@@ -68,9 +72,9 @@ func main() {
 	return
 
 	// dir name for data to encrypt
-	if setupDir() != true {
-		return
-	}
+	// if setupDir() != true {
+	// 	return
+	// }
 	fdata := "files"
 
 	dir := "./" + fdata
