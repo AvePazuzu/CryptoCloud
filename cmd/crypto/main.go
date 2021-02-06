@@ -19,7 +19,7 @@ func main() {
 	// setupDir() checks directory for missing folders and creates them
 	setupDir()
 
-	fmt.Println("Select from the following options:\n",
+	fmt.Println("Select from the following options & confrim with \"Enter\":\n",
 		"[1]: Encrypt\n",
 		"[2]: Decrypt\n",
 		"[3]: Compare\n",
