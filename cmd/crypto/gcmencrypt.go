@@ -35,15 +35,6 @@ func encrypt() {
 		fmt.Printf("\n %q", n)
 	}
 
-	// text, err := ioutil.ReadFile("./data_to_encrypt/" + fileName)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// fmt.Println(text)
-	// to comape the decrypted data with the source data the checksum is passed to the Seal func
-	// sum := sha256.Sum256(text)
-
 	// Ask for passphrase by reading input from console
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println()
@@ -109,6 +100,7 @@ func encrypt() {
 		fmt.Printf("\n%q successfully encrypted.", inNames.Name())
 
 	}
+
 	fmt.Println()
 	fmt.Println("\nEncryption successfull... Your data is ready to be uploaded...")
 
