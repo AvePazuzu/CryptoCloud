@@ -41,7 +41,7 @@ func main() {
 
 		switch input {
 		case "1":
-			fmt.Println("\nData to encrypt:")
+			// fmt.Println("\nData to encrypt:")
 			encrypt()
 			continue
 		case "2":
