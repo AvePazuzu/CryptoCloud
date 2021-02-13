@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	// "time"
 )
@@ -22,46 +21,47 @@ func setupDir() {
 			fmt.Printf("\nFolder \"%s\" created.\n", dir)
 		}
 	}
-	fmt.Println("\nDirectory is set up... You are ready to lock...\n")
+	fmt.Println("\nDirectory is set up... You are ready to lock...")
 
 }
 
-// mkDir scans dir for desired folder and creates it if necessary
-func mkDir(dirName string) {
+// // mkDir scans dir for desired folder and creates it if necessary
+// func mkDir(dirName string) {
 
-	path := "./" + dirName
-	fmt.Printf("\nCheking directory ... ")
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		os.Mkdir(path, 0744)
-		fmt.Printf("Folder %q successfully created.\n", dirName)
-	} else {
-		fmt.Printf("Folder %q already exsists.\n", dirName)
-	}
-}
+// 	path := "./" + dirName
+// 	fmt.Printf("\nCheking directory ... ")
+// 	if _, err := os.Stat(path); os.IsNotExist(err) {
+// 		os.Mkdir(path, 0744)
+// 		fmt.Printf("Folder %q successfully created.\n", dirName)
+// 	} else {
+// 		fmt.Printf("Folder %q already exsists.\n", dirName)
+// 	}
+// }
 
 // getEcnypted retruns the file information in dir: "encrypted"
-func getEncrypted() (encs []string) {
+// func getEncrypted() (encs []string) {
 
-	files, err := ioutil.ReadDir("./encrypted")
-	if err != nil {
-		fmt.Println("Reading encrypted file information failed! Program is terminated! Error: ", err)
-		return
-	}
+// 	// retrieve mata data from
+// 	inData, err := ioutil.ReadDir("./encrypted")
+// 	if err != nil {
+// 		fmt.Println("Reading encrypted file information failed! Program is terminated! Error: ", err)
+// 		return
+// 	}
 
-	for _, file := range files {
-		n := file.Name()
-		encs = append(encs, n)
-	}
-	return
-}
+// for _, names := range inData {
+// 	n := file.Name()
+// 	encs = append(encs, n)
+// }
+// 	return
+// }
 
 // exit() returns from the function
-func exit() {
-	fmt.Printf("\nPress %q to Exit.", "Enter")
-	var input string
-	fmt.Scanln(&input)
-	return
-}
+// func exit() {
+// 	fmt.Printf("\nPress %q to Exit.", "Enter")
+// 	var input string
+// 	fmt.Scanln(&input)
+// 	return
+// }
 
 // wrErr function to write out all errors. It takes the error if
 // occures and writes the error message to file.
